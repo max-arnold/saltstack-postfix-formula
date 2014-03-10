@@ -1,0 +1,4 @@
+{% set postfix = salt['grains.filter_by']({
+    'Debian': {
+    },
+}, grain='os_family', merge=salt['pillar.get']('postfix:lookup')) %}
