@@ -37,7 +37,7 @@ relayhost =
 mynetworks = {{ mynetworks }}
 mailbox_size_limit = 0
 recipient_delimiter = +
-inet_interfaces = {% if inet_interfaces is defined %}{{ inet_interfaces }}{% else %}loopback-only{% endif %}
+inet_interfaces = {{ inet_interfaces }}
 default_transport = error
 relay_transport = error
 

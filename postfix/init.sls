@@ -2,6 +2,7 @@
 {% set mynetworks = pillar.get('postfix:mynetworks', '127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128') %}
 {% set mailname = pillar.get('postfix:mailname', grains['fqdn']) %}
 {% set myhostname = pillar.get('postfix:myhostname', grains['fqdn']) %}
+{% set inet_interfaces = pillar.get('postfix:inet_interfaces', 'loopback-only' %}
 
 postfix:
   debconf.set:
@@ -41,6 +42,7 @@ postfix:
     - context:
       myhostname: {{ myhostname }}
       mynetworks: {{ mynetworks }}
+      inet_interfaces: {{ inet_interfaces }}
 
 /etc/postfix/master.cf:
   file.managed:
