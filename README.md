@@ -1,4 +1,4 @@
-# SaltStack Formula
+# SaltStack Postfix Formula
 
 ## Available states
 
