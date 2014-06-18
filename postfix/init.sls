@@ -37,7 +37,7 @@ postfix:
 
 /etc/postfix/main.cf:
   file.managed:
-    - source: salt://postfix/files/main.cf
+    - source: salt://postfix/files/{{ postfix.conf_prefix }}/main.cf
     - template: jinja
     - context:
       myhostname: {{ myhostname }}
@@ -46,7 +46,7 @@ postfix:
 
 /etc/postfix/master.cf:
   file.managed:
-    - source: salt://postfix/files/master.cf
+    - source: salt://postfix/files/{{ postfix.conf_prefix }}/master.cf
     - template: jinja
 
 /etc/postfix/maps:

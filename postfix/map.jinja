@@ -1,4 +1,6 @@
+# It will be better after this gets implemented: https://github.com/saltstack/salt/issues/11166
 {% set postfix = salt['grains.filter_by']({
-    'Debian': {
+    'Ubuntu-14.04': {
+       'conf_prefix': 'ubuntu-1404',
     },
-}, grain='os_family', merge=salt['pillar.get']('postfix:lookup')) %}
+}, grain='osfinger', merge=salt['pillar.get']('postfix:lookup')) %}
