@@ -1,0 +1,10 @@
+postfix:
+  # a way to override map.jinja
+  lookup:
+    conf_prefix: ubuntu-1404
+
+  # regular parameters
+  mynetworks: '127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128'
+  mailname: postfix.local
+  myhostname: postfix.local
+  inet_interfaces: loopback-only
