@@ -1,9 +1,9 @@
 {% from "postfix/map.jinja" import postfix with context %}
 {% from "postfix/context.jinja" import mynetworks,mailname,myhostname,inet_interfaces with context %}
-{% set relayhost = pillar.get('postfix:relayhost') %}
-{% set relayuser = pillar.get('postfix:relayuser') %}
-{% set relaypass = pillar.get('postfix:relaypass') %}
-{% set canonical = pillar.get('postfix:canonical') %}
+{% set relayhost = salt['pillar.get']('postfix:relayhost') %}
+{% set relayuser = salt['pillar.get']('postfix:relayuser') %}
+{% set relaypass = salt['pillar.get']('postfix:relaypass') %}
+{% set canonical = salt['pillar.get']('postfix:canonical') %}
 
 include:
   - postfix
