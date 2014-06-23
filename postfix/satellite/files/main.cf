@@ -1,0 +1,7 @@
+{% extends "postfix/files/main.cf" %}
+
+{% block extra %}
+relayhost = {{ relayhost }}
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/passwd
+sender_canonical_maps = pcre:/etc/postfix/maps/sender-canonical
+{% endblock %}
