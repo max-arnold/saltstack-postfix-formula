@@ -53,3 +53,5 @@ postfix:
     - user: root
     - group: root
     - mode: 755
+
+# TODO: manage smtpd_tls_cert and smtpd_tls_key if defined
