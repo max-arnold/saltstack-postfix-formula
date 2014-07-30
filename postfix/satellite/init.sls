@@ -1,5 +1,5 @@
 {% from "postfix/map.jinja" import postfix with context %}
-{% from "postfix/context.jinja" import mynetworks,mailname,myhostname,inet_interfaces with context %}
+{% import "postfix/context.jinja" as ctx with context %}
 {% set relayhost = salt['pillar.get']('postfix:relayhost') %}
 {% set relayuser = salt['pillar.get']('postfix:relayuser') %}
 {% set relaypass = salt['pillar.get']('postfix:relaypass') %}
@@ -13,18 +13,21 @@ extend:
     debconf.set:
       - data:
           'postfix/main_mailer_type': {'type': 'select', 'value': 'Satellite system'}
-          'postfix/mailname': {'type': 'string', 'value': '{{ myhostname }}'}
+          'postfix/mailname': {'type': 'string', 'value': '{{ ctx.myhostname }}'}
           'postfix/destinations': {'type': 'string', 'value': 'localhost.localdomain, localhost'}
-          'postfix/mynetworks': {'type': 'string', 'value': '{{ mynetworks }}'}
+          'postfix/mynetworks': {'type': 'string', 'value': '{{ ctx.mynetworks }}'}
           'postfix/relayhost': {'type': 'string', 'value': '{{ relayhost }}'}
   /etc/postfix/main.cf:
     file.managed:
       - source: salt://postfix/satellite/files/main.cf
       - template: jinja
       - context:
-        myhostname: {{ myhostname }}
-        mynetworks: {{ mynetworks }}
-        inet_interfaces: {{ inet_interfaces }}
+        myhostname: {{ ctx.myhostname }}
+        mynetworks: {{ ctx.mynetworks }}
+        inet_interfaces: {{ ctx.inet_interfaces }}
+        smtpd_tls_cert: {{ ctx.smtpd_tls_cert }}
+        smtpd_tls_key: {{ ctx.smtpd_tls_key }}
+        smtpd_tls_ca: {{ ctx.smtpd_tls_ca }}
         relayhost: {{ relayhost }}
 
 /etc/postfix/maps/sender-canonical:

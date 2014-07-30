@@ -2,3 +2,6 @@
 {% set mailname = salt['pillar.get']('postfix:mailname', grains['fqdn']) %}
 {% set myhostname = salt['pillar.get']('postfix:myhostname', grains['fqdn']) %}
 {% set inet_interfaces = salt['pillar.get']('postfix:inet_interfaces', 'loopback-only') %}
+{% set smtpd_tls_cert = salt['pillar.get']('postfix:smtpd_tls_cert', '/etc/ssl/certs/ssl-cert-snakeoil.pem') %}
+{% set smtpd_tls_key = salt['pillar.get']('postfix:smtpd_tls_key', '/etc/ssl/private/ssl-cert-snakeoil.key') %}
+{% set smtpd_tls_ca = salt['pillar.get']('postfix:smtpd_tls_ca', '/etc/ssl/certs/ca-certificates.crt') %}

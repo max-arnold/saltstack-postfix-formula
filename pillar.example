@@ -3,6 +3,9 @@ postfix:
   mailname: postfix.local
   myhostname: postfix.local
   inet_interfaces: loopback-only
+  smtpd_tls_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem
+  smtpd_tls_key: /etc/ssl/private/ssl-cert-snakeoil.key
+  smtpd_tls_ca: /etc/ssl/certs/ca-certificates.crt
   relayhost: smtp.example.com
   relayuser: noreply@example.com
   relaypass: password

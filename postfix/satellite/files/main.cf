@@ -2,7 +2,8 @@
 
 {% block tls_extra %}
 # TODO: conditional
-smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_tls_CAfile = {{ smtpd_tls_ca }}
+smtpd_tls_CAfile = $smtp_tls_CAfile
 smtp_sasl_auth_enable = yes
 # none/may/encrypt
 smtp_tls_security_level = may
